@@ -1,13 +1,13 @@
 import https from 'https';
 import http from 'http';
 
-/** @typedef {import('http').ClientRequest} ClientRequest */
-/** @typedef {import('http').RequestOptions} HTTPRequestOptions */
-/** @typedef {import('https').RequestOptions} HTTPSRequestOptions */
+/** @typedef {http.ClientRequest} ClientRequest */
+/** @typedef {http.RequestOptions} HTTPRequestOptions */
+/** @typedef {https.RequestOptions} HTTPSRequestOptions */
 /** @typedef {HTTPRequestOptions|HTTPSRequestOptions} RequestOptions */
 /** @typedef {(optionsOrURL:string|URL|HTTPRequestOptions,...args:any)=>ClientRequest} HTTPFunction */
 /** @typedef {(optionsOrURL:string|URL|HTTPSRequestOptions,...args:any)=>ClientRequest} HTTPSFunction */
-/** @typedef {(optionsOrURL:string|URL|RequestOptions,...args:any)=>ClientRequest} VariedFunction */
+/** @typedef {typeof http.get|typeof https.get} VariedFunction */
 
 /**
  * Given HTTP and HTTPS function variants, returns a new function which passes through to the
@@ -18,13 +18,18 @@ import http from 'http';
  *
  * @return {VariedFunction} Function which passes through to the appropriate HTTP or HTTPS function.
  */
-const varyOptionsOrURL = (httpFn, httpsFn) => (optionsOrURL, ...args) => {
-	if (typeof optionsOrURL === 'string') optionsOrURL = new URL(optionsOrURL);
+const varyOptionsOrURL = (httpFn, httpsFn) =>
+	/**
+	 * @param {string|URL|RequestOptions} optionsOrURL
+	 * @param {...any} args
+	 */
+	(optionsOrURL, ...args) => {
+		if (typeof optionsOrURL === 'string') optionsOrURL = new URL(optionsOrURL);
 
-	return optionsOrURL.protocol === 'https:'
-		? httpsFn(optionsOrURL, ...args)
-		: httpFn(optionsOrURL, ...args);
-};
+		return optionsOrURL.protocol === 'https:'
+			? httpsFn(optionsOrURL, ...args)
+			: httpFn(optionsOrURL, ...args);
+	};
 
 export const get = varyOptionsOrURL(http.get, https.get);
 export const request = varyOptionsOrURL(http.request, https.request);
