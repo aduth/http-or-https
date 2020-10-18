@@ -30,7 +30,8 @@
 		"test:mocha": "mocha *.test.js",
 		"test:eslint": "eslint .",
 		"test:typescript": "tsc",
-		"test": "run-p test:*"
+		"test": "run-p test:*",
+		"prepublishOnly": "npm run build"
 	},
 	"files": [
 		"http-or-https.js",
