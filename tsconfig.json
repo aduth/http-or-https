@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"strict": true,
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"allowSyntheticDefaultImports": true,
+		"types": ["node"]
+	},
+	"files": ["http-or-https.js"]
+}

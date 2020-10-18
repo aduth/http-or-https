@@ -1,0 +1,35 @@
+{
+	"name": "http-or-https",
+	"description": "Automatically use the http or https function appropriate to the given parameter",
+	"type": "module",
+	"version": "1.0.0",
+	"main": "http-or-https.js",
+	"license": "MIT",
+	"engines": {
+		"node": ">=12"
+	},
+	"scripts": {
+		"build": "tsc",
+		"test:mocha": "mocha *.test.js",
+		"test:eslint": "eslint .",
+		"test:typescript": "tsc",
+		"test": "run-p test:*"
+	},
+	"files": [
+		"http-or-https.js",
+		"http-or-https.d.ts"
+	],
+	"devDependencies": {
+		"@types/mocha": "^8.0.3",
+		"@types/node": "^14.11.10",
+		"chai": "^4.2.0",
+		"eslint": "^7.11.0",
+		"eslint-config-prettier": "^6.13.0",
+		"eslint-plugin-prettier": "^3.1.4",
+		"mocha": "^8.2.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^2.1.2",
+		"sinon": "^9.2.0",
+		"typescript": "^4.0.3"
+	}
+}
