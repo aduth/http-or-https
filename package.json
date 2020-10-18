@@ -2,7 +2,7 @@
 	"name": "http-or-https",
 	"description": "Automatically use the http or https function appropriate to the given parameter",
 	"type": "module",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"main": "http-or-https.js",
 	"license": "MIT",
 	"engines": {
