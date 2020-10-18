@@ -8,6 +8,23 @@
 	"engines": {
 		"node": ">=12"
 	},
+	"keywords": [
+		"http",
+		"https"
+	],
+	"author": {
+		"name": "Andrew Duthie",
+		"email": "andrew@andrewduthie.com",
+		"url": "https://andrewduthie.com"
+	},
+	"homepage": "https://github.com/aduth/http-or-https",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aduth/http-or-https.git"
+	},
+	"bugs": {
+		"url": "https://github.com/aduth/http-or-https/issues"
+	},
 	"scripts": {
 		"build": "tsc",
 		"test:mocha": "mocha *.test.js",
